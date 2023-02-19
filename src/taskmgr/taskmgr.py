@@ -6,9 +6,9 @@ class TaskMgr:
         # Actual initialization of the instance attributes is done in reset funtion.
         self._rev_task_list = None  # List of tasks to execute in reverse order.
         self._start_task = None  # True if a new task is about to be started.
-        self.reset(p_beat_duration_ms, p_task_list)
         self._beat_duration_ms = None  # Defines the rythm of the beat in milliseconds per beat (0 = no wait).
         self._last_beat_ticks_ms = None  # Time in milliseconds when the next beat is due.
+        self.reset(p_beat_duration_ms, p_task_list)
 
     def reset(self, p_beat_duration_ms=0, p_task_list=None):
         self._rev_task_list = []  # Initialize the list of tasks as empty.
@@ -34,7 +34,7 @@ class TaskMgr:
         # Will abort immediately if the next beat is not due.
         # If the current task is new, it will call the start function of this task.
         # Will call the beat function of the current task.
-        if time.ticks_diff(time.ticks_ms(), self._last_beat_ticks_ms) > self._beat_duration_ms:
+        if time.ticks_diff(time.ticks_ms(), self._last_beat_ticks_ms) < self._beat_duration_ms:
             return True  # Abort if next beat is not due yet.
         self._last_beat_ticks_ms = time.ticks_ms()
         
