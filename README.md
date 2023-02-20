@@ -21,6 +21,7 @@ After that, the Task Manager will call the Beat function over and over again unt
 The Start function is meant to initialize the Task.
 
 The Beat function is meant to process events and thus react to those.
+To allow a fixed interval between beat executions the option is available to configure that.
 
 ## Examples
 * Micro:bit example without reusing task classes
