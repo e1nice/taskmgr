@@ -113,7 +113,7 @@ class Task:
         Args:
             p_duration_ms: The duration, in milliseconds.
         """
-        return time.ticks_diff(time.ticks_ms(), self._start_ticks_ms) > p_duration_ms
+        return time.ticks_diff(time.ticks_ms(), self._start_ticks_ms) >= p_duration_ms
 
     def start(self):
         """Will be called once by the Task Manager when the task is starting.
